@@ -22,10 +22,10 @@
 
 //フォームに入力、選択されたものと対応させる
 //PHPでPOSTしたデータを受け取る
-    if(isset($_GET["calculator"]) && $_GET["calculator2"] && $_GET["operator"]) {
-        $number1 = $_GET["calculator"];
-        $number2 = $_GET["calculator2"];
-        $operand = $_GET["operator"];
+    if(isset($_POST["calculator"]) && $_POST["calculator2"] && $_POST["operator"]) {
+        $number1 = $_POST["calculator"];
+        $number2 = $_POST["calculator2"];
+        $operand = $_POST["operator"];
     };
 
      //$number1 = "5";
