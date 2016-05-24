@@ -3,8 +3,8 @@
     <title>電卓</title>
 </head>
 <body>
-<!--フォームを作る-->
-<form method="GET" action="conputer.php">
+<!--入力フォームを作る-->
+<form method="POST" action="conputer.php">
     計算：
     <input type="text" name="calculator" size="3">
     <select name="operator">
@@ -20,34 +20,33 @@
     <?php
     print '計算結果　<br/>';
 
-//フォームに入力、選択されたものと対応させる
-//PHPでPOSTしたデータを受け取る
+    /*PHPでPOSTしたデータを受け取る*/
     if(isset($_POST["calculator"]) && $_POST["calculator2"] && $_POST["operator"]) {
         $number1 = $_POST["calculator"];
         $number2 = $_POST["calculator2"];
         $operand = $_POST["operator"];
-    };
 
-     //$number1 = "5";
-    //$number2 = "10";
 
-    //入力されたものを計算して、表示する
+        /*入力されたものを計算して、表示する*/
+        //入力フォームに数字が入っているかを確認する
         if (isset($operand)) {
-            if ($operand == "1") {
-                print $number1 + $number2;
-            } elseif ($operand == "2") {
-                print $number1 - $number2;
-            } elseif ($operand == "3") {
-                print $number1 * $number2;
-            } else{print $number1 / $number2;}
-        };
 
-
+            //入力されたものが数字か確認する
+            if (is_numeric($number1) && is_numeric($number2)) {
+                if ($operand == "1") {
+                    print $number1 + $number2;
+                } elseif ($operand == "2") {
+                    print $number1 - $number2;
+                } elseif ($operand == "3") {
+                    print $number1 * $number2;
+                } elseif ($operand == "4") {
+                    print $number1 / $number2;
+                }
+            }
+        }
+    }
 ?>
 
 
 </body>
 </html>
-
-
-
