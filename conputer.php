@@ -26,14 +26,10 @@
         $number2 = $_GET["calculator2"];
         $operand = $_GET["operator"];
 
-
-
         /*入力されたものを計算して、表示
         する*/
         //入力フォームに数字が入っているかを確認する
-
-
-            //入力されたものが数字か確認する
+        //入力されたものが数字か確認する
             if (is_numeric($number1) && is_numeric($number2)) {
                 switch ($operand) {
                     case '1':
@@ -46,6 +42,7 @@
                         print $number1 * $number2;
                         break;
                     case "4":
+         //0除算子の処理を行う
                         if($number2 == 0){
                             print '分母に0を入れることはできません。';
                         }else {
@@ -53,8 +50,7 @@
                         }
                         break;
                 }
-                    //0除算子の処理を行う
-                    /**/
+
              }  else print '数値を入力してください。';
 
 
