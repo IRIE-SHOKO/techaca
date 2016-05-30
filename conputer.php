@@ -18,8 +18,8 @@
     ＝
     <input type="submit" value="計算">
 </form>
-<br/>
-        <p> 計算結果　<br/></p>
+<br>
+        <p> 計算結果</p>
 <?PHP
     /*PHPでPOSTしたデータを受け取る*/
     if(isset($_GET["calculator"]) && isset($_GET["calculator2"]) && isset($_GET["operator"])) {
@@ -31,30 +31,31 @@
         する*/
         //入力フォームに数字が入っているかを確認する
         //入力されたものが数字か確認する
-            if (is_numeric($number1) && is_numeric($number2)) {
-                switch ($operand) {
-                    case '1':
-                        print $number1 + $number2;
-                        break;
-                    case "2":
-                        print $number1 - $number2;
-                        break;
-                    case "3":
-                        print $number1 * $number2;
-                        break;
-                    case "4":
+        if (is_numeric($number1) && is_numeric($number2)) {
+            switch ($operand) {
+                case '1':
+                    print $number1 + $number2;
+                    break;
+                case "2":
+                    print $number1 - $number2;
+                    break;
+                case "3":
+                    print $number1 * $number2;
+                    break;
+                case "4":
          //0除算子の処理を行う
-                        if($number2 == 0){
-                            print '分母に0を入れることはできません。';
-                        }else {
-                            print $number1 / $number2;
-                        }
+                    //
+                    if($number2 == 0){
+                        print '分母に0を入れることはできません。';
+                    }else {
+                        print $number1 / $number2;
+                    }
                         break;
                 }
 
-             }  else {
-                        print '数値を入力してください。';
-                      }
+            } else {
+                    print '数値を入力してください。';
+            }
 
 
     }
