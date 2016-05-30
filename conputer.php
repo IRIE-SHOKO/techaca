@@ -1,10 +1,11 @@
 <html>
-<head>
+<head >
+    <meta charset="UTF-8">
     <title>電卓</title>
 </head>
 <body>
 <!--入力フォームを作る-->
-<form method="GET" action="">
+<form name="form1" method="GET" action="conputer.php">
     計算：
     <input type="text" name="calculator" size="3">
     <select name="operator">
@@ -15,11 +16,11 @@
     </select>
     <input type="text" name="calculator2" size="3">
     ＝
-    <input type="submit" value="計算"></form>
-    <br/>
-    <?php
-
-    print '計算結果　<br/>';
+    <input type="submit" value="計算">
+</form>
+<br/>
+        <p> 計算結果　<br/></p>
+<?PHP
     /*PHPでPOSTしたデータを受け取る*/
     if(isset($_GET["calculator"]) && isset($_GET["calculator2"]) && isset($_GET["operator"])) {
         $number1 = $_GET["calculator"];
@@ -51,7 +52,9 @@
                         break;
                 }
 
-             }  else print '数値を入力してください。';
+             }  else {
+                        print '数値を入力してください。';
+                      }
 
 
     }
