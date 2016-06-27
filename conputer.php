@@ -5,7 +5,7 @@
 </head>
 <body>
 <!--入力フォームを作る-->
-<form name="form1" method="GET" action="conputer.php">
+<form name="form1" method="POST" action="conputer.php">
     計算：
     <input type="text" name="calculator" size="3">
     <select name="operator">
@@ -19,47 +19,42 @@
     <input type="submit" value="計算">
 </form>
 <br>
-        <p> 計算結果</p>
+<p> 計算結果</p>
 <?PHP
-    /*PHPでPOSTしたデータを受け取る*/
-    if(isset($_GET["calculator"]) && isset($_GET["calculator2"]) && isset($_GET["operator"])) {
-        $number1 = $_GET["calculator"];
-        $number2 = $_GET["calculator2"];
-        $operand = $_GET["operator"];
-
-        /*入力されたものを計算して、表示
-        する*/
-        //入力フォームに数字が入っているかを確認する
-        //入力されたものが数字か確認する
-        if (is_numeric($number1) && is_numeric($number2)) {
-            switch ($operand) {
-                case '1':
-                    print $number1 + $number2;
-                    break;
-                case "2":
-                    print $number1 - $number2;
-                    break;
-                case "3":
-                    print $number1 * $number2;
-                    break;
-                case "4":
-         //0除算子の処理を行う
-                    //
-                    if($number2 == 0){
-                        print '分母に0を入れることはできません。';
-                    }else {
-                        print $number1 / $number2;
-                    }
-                        break;
+/*PHPでPOSTしたデータを受け取る*/
+if(isset($_POST["calculator"]) && isset($_POST["calculator2"]) && isset($_POST["operator"])) {
+    $number1 = $_POST["calculator"];
+    $number2 = $_POST["calculator2"];
+    $operand = $_POST["operator"];
+    /*入力されたものを計算して、表示
+    する*/
+    //入力フォームに数字が入っているかを確認する
+    //入力されたものが数字か確認する
+    if (is_numeric($number1) && is_numeric($number2)) {
+        switch ($operand) {
+            case '1':
+                print $number1 + $number2;
+                break;
+            case "2":
+                print $number1 - $number2;
+                break;
+            case "3":
+                print $number1 * $number2;
+                break;
+            case "4":
+                //0除算子の処理を行う
+                //
+                if($number2 == 0){
+                    print '分母に0を入れることはできません。';
+                }else {
+                    print $number1 / $number2;
                 }
-
-            } else {
-                    print '数値を入力してください。';
-            }
-
-
+                break;
+        }
+    } else {
+        print '数値を入力してください。';
     }
-
+}
 ?>
 
 
