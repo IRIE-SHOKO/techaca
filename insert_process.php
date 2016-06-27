@@ -7,8 +7,6 @@ try {
     //INSERT命令の準備
 
     $stt = $db->prepare('INSERT INTO board ("name", "contents") VALUES(":name", ":contents")');
-    var_dump($stt); exit();
-
     //INSERT命令にポストデータの内容をセット
     $stt->bindValue(':name', $_POST['name']);
     $stt->bindValue(':contents', $_POST['contents']);
