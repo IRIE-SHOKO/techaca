@@ -5,8 +5,7 @@ try {
     //データベースへの絶族を確立
     $db = getDb();
     //INSERT命令の準備
-
-    $stt = $db->prepare('INSERT INTO builtinboard ("name", "contents") VALUES(":name", ":contents")');
+    $stt = $db->prepare('INSERT INTO builtinboard (name, contents) VALUES(:name, :contents)');
     //INSERT命令にポストデータの内容をセット
     $stt->bindValue(':name', $_POST['name']);
     $stt->bindValue(':contents', $_POST['contents']);
@@ -16,7 +15,7 @@ try {
     $result= $db->prepare('SELECT * from builtinboard ORDER BY id DESC');
     $result->execute();
 
-        while ($row = $stt->fetch(PDO::FETCH_ASSOC)){
+        while ($row = $result->fetch(PDO::FETCH_ASSOC)){
                 echo $row['name'];
                 echo"<br>";
                 echo $row['contents'];
