@@ -2,7 +2,7 @@
 require_once 'DbManager.php';
 
 try {
-    //データベースへの絶族を確立
+    //データベースへの接続を確立
     $db = getDb();
     //INSERT命令の準備
     $stt = $db->prepare('INSERT INTO builtinboard (name, contents) VALUES(:name, :contents)');
@@ -16,15 +16,15 @@ try {
     $result->execute();
 
         while ($row = $result->fetch(PDO::FETCH_ASSOC)){
+                echo "名前：";
                 echo $row['name'];
                 echo"<br>";
                 echo $row['contents'];
-                echo"<br><br>";
+                echo"<br>";
+                echo"<br>";
         };
 
 }   catch (PDOException $e){
     die("エラーメッセージ:{$e->getMessage()}");
     }
 
-//heade('Location: localhost/'.$_SERVER['HTTP_HOST'])
-    //.dirname($_SERVER['PHP_SELF']).'/insert_form.php';
