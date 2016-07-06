@@ -29,6 +29,7 @@ if(isset($_POST["name"]) && isset($_POST["id"]) && isset($_POST["password"])) {
             if ($password == '') {
                 $error['password'] = 'blank';
             }
+        //ここのコードの意味がよく分かってない。
             if (empty($error)) {
                 $_SESSION['join'] = $_POST;
                 header('Location: check.php');
@@ -48,10 +49,10 @@ if(isset($_POST["name"]) && isset($_POST["id"]) && isset($_POST["password"])) {
                  echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
                  }?>"/>
 
-            <?php if (isset($error['name'])){
-                if ($error['name'] == 'blank') :?>
-                <p class="error">*お名前を入力してください</p>
-                <?PHP endif;} ?>
+                　<?php if (isset($error['name'])){
+                  if($error['name'] == 'blank') :?>
+                　<p class="error">*お名前を入力してください</p>
+                　<?PHP endif;} ?>
             </dd>
 <br>
             <dt>ユーザID<span class="required">【必須】</span></dt>
@@ -60,7 +61,7 @@ if(isset($_POST["name"]) && isset($_POST["id"]) && isset($_POST["password"])) {
                  echo htmlspecialchars($id, ENT_QUOTES, 'UTF-8');
                  }?>"/>
 
-            <?php if (isset($error['id'])){
+                　<?php if (isset($error['id'])){
                  if ($error['id'] == 'blank') :?>
                  <p class="error">*ユーザーIDを入力してください</p>
                  <?PHP endif;} ?>
@@ -72,14 +73,14 @@ if(isset($_POST["name"]) && isset($_POST["id"]) && isset($_POST["password"])) {
                  echo htmlspecialchars($password, ENT_QUOTES, 'UTF-8');
                  }?>"/>
 
-                <?php if (isset($error['password'])){
-                    if ($error['password'] == 'length') :?>
-                        <p class="error">*パスワードは4文字以上にしてください</p>
-                    <?PHP endif;} ?>
-                <?php if (isset($error['password'])){
-                    if ($error['password'] == 'blank') :?>
-                        <p class="error">*パスワードを設定してください</p>
-                    <?PHP endif;} ?>
+                <?php if (isset($error['password']))
+                  {if ($error['password'] == 'length') :?>
+                　<p class="error">*パスワードは4文字以上にしてください</p>
+                　<?PHP endif;} ?>
+                　<?php if (isset($error['password'])){
+                 if ($error['password'] == 'blank') :?>
+                 <p class="error">*パスワードを設定してください</p>
+                 <?PHP endif;} ?>
             </dd>
         </dl>
     <div><input type="submit" value="入力内容を確認する"></div>
