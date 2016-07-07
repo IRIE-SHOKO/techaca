@@ -6,7 +6,7 @@
 <body>
 <p>ユーザー登録が完了しました</p>
 <br>
-<p><a href="../">ログインする</a></p>
+<p><a href="../../">ログインする</a></p>
 <?php
 session_start();
 
