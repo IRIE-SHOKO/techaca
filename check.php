@@ -6,15 +6,29 @@
 <body>
 <?php
 session_start();
-
-//入力画面で記録した情報が空の場合、入力画面に移動させる
-if(!isset($_SESSION['join'])){
+//データベースに接続する
+require_once 'dbconnect.php';
+var_dump($_SESSION['join']);
+//直接check.phpが呼び出された場合は、入力画面("index.php")に移動させる。
+if (!isset($_POST)){
     header('Location: join.index.php');
     exit();
 }
+
+try {
+        $db = getDb();
+        //$_POSTの中身が空ではない場合、情報をデータベースに登録する
+        $stt = $db->prepare('INSERT INTO members (name, id, password) VALUES(:name, :id, :password)');
+        $stt->bindValue(':name', $_SESSION['join']['name']);
+        $stt->bindValue(':id', $_SESSION['join']['id']);
+        $stt->bindValue(':password', $_SESSION['join']['password']);
+        $stt->execute();
+}   catch (PDOException $e){
+    die("エラーメッセージ:{$e->getMessage()}");
+    }
 ?>
 
-<form action="" method="post">
+<form action="thanks.php" method="post">
         <dl>
             <dt>ニックネーム</dt>
             <dd>
@@ -34,5 +48,7 @@ if(!isset($_SESSION['join'])){
     <div><a href="join.index.php?action=rewrite">&laquo;&nbsp;書き直す</a>
     <input type="submit" value="登録する"></div>
 </form>
+
+
 </body>
 </html>
