@@ -8,7 +8,6 @@
 session_start();
 //データベースに接続する
 require_once 'dbconnect.php';
-var_dump($_SESSION['join']);
 //直接check.phpが呼び出された場合は、入力画面("index.php")に移動させる。
 if (!isset($_POST)){
     header('Location: join.index.php');
