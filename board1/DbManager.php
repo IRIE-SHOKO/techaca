@@ -4,7 +4,7 @@ function getDb(){
     $usr = 'root';
     $passwd = '224335Eri';
     try {
-        //データベースへの接続を設立
+        //データベースへの接続を確立
         $db = new PDO($dsn, $usr, $passwd);
         //データベース接続時に使用する文字コードをutf8に設定
         $db->exec('SET NAMES utf8');
