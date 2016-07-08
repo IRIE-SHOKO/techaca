@@ -8,23 +8,24 @@
 session_start();
 //データベースに接続する
 require_once 'dbconnect.php';
-//直接check.phpが呼び出された場合は、入力画面("index.php")に移動させる。
-if (!isset($_POST)){
-    header('Location: join.index.php');
-    exit();
-}
 
-try {
+
+//直接check.phpが呼び出された場合は、入力画面("index.php")に移動させる。
+try{if (!isset($_POST)){
+   header('Location: join.index.php');
+   exit();
+   }
+
         $db = getDb();
         //$_POSTの中身が空ではない場合、情報をデータベースに登録する
-        $stt = $db->prepare('INSERT INTO members (name, id, password) VALUES(:name, :id, :password)');
+        $stt = $db->prepare('INSERT INTO members (name, user_id, password) VALUES(:name, :user_id, :password)');
         $stt->bindValue(':name', $_SESSION['join']['name']);
-        $stt->bindValue(':id', $_SESSION['join']['id']);
+        $stt->bindValue(':user_id', $_SESSION['join']['user_id']);
         $stt->bindValue(':password', $_SESSION['join']['password']);
         $stt->execute();
-}   catch (PDOException $e){
-    die("エラーメッセージ:{$e->getMessage()}");
-    }
+}       catch (PDOException $e){
+        die("エラーメッセージ:{$e->getMessage()}");
+        }
 ?>
 
 <form action="thanks.php" method="post">
@@ -36,7 +37,7 @@ try {
             <br>
             <dt>ユーザーID</dt>
             <dd>
-            <?php echo htmlspecialchars($_SESSION['join']['id'], ENT_QUOTES, 'UTF-8');?>
+            <?php echo htmlspecialchars($_SESSION['join']['user_id'], ENT_QUOTES, 'UTF-8');?>
             </dd>
             <br>
             <dt>パスワード</dt>
