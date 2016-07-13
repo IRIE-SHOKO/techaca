@@ -1,17 +1,16 @@
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>会員登録</title>
-</head>
-<body>
 <?php
-session_start();
-//データベースに接続
-require_once 'dbconnect.php';
 
-try {
-     //データベースへの接続を確立
-     $db = getDb();
+try {session_start();
+    //データベースに接続
+    require_once 'dbconnect.php';
+
+
+    //htemlspecialcharsのショートカットを作成
+    function h($value){
+        return htmlspecialchars($value, ENT_QUOTES, 'UTF-8');
+    }
+    //データベースへの接続を確立
+    $db = getDb();
 
     //POSTしたものを受け取り、それぞれの関数に格納
     if (isset($_POST['name']) && isset($_POST['user_id']) && isset($_POST['password'])) {
@@ -37,15 +36,14 @@ try {
 
             //ユーザーIDが重複していないか確認
             if (empty($error)) {
-                $result = $db->prepare("SELECT user_id FROM members WHERE user_id = '$user_id'");
-                $result->execute();
+                $stt = $db->prepare("SELECT user_id FROM members WHERE user_id = '$user_id'");
+                $stt->execute();
                 //選択された行数を返す
-                $count = $result->rowCount();
+                $count = $stt->rowCount();
                 if ($count > 0){
-                $error['user_id'] = 'duplicate';
+                    $error['user_id'] = 'duplicate';
                 }
             }
-
             //エラー項目がない場合、セッション情報をcheck.phpに送信
             if (empty($error)) {
                 $_SESSION['join'] = $_POST;
@@ -58,9 +56,16 @@ try {
         }
     }
 }catch (PDOException $e){
- die("エラーメッセージ:{$e->getMessage()}");
- }
+    die("エラーメッセージ:{$e->getMessage()}");
+}
 ?>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>会員登録</title>
+</head>
+<body>
 
 <!--入力フォームを作成-->
 <!--入力内容を常に再現-->
@@ -71,7 +76,7 @@ try {
         <dt>お名前<span class="required">【必須】</span></dt>
         <dd><input type="text" name="name" size="35" maxlength="255"
                    value="<?php if(isset($name)){
-                       echo htmlspecialchars($name, ENT_QUOTES, 'UTF-8');
+                       echo h($name, ENT_QUOTES, 'UTF-8');
                    }?>"/>
 
             <!--名前が入力されていない場合、エラーメッセージを出力-->
@@ -86,7 +91,7 @@ try {
         <dt>ユーザID<span class="required">【必須】</span></dt>
         <dd><input type="text" name="user_id" size="20" maxlength="45"
                    value="<?php if(isset($user_id)){
-                       echo htmlspecialchars($user_id, ENT_QUOTES, 'UTF-8');
+                       echo h($user_id, ENT_QUOTES, 'UTF-8');
                    }?>"/>
 <!--ユーザーIDが入力されていない場合、エラーメッセージを出力-->
             　<?php if (isset($error['user_id'])){
@@ -105,7 +110,7 @@ try {
         <dt>パスワード<span class="required">【必須】</span></dt>
         <dd><input type="password" name="password" size="10" maxlength="35"
                    value="<?php if(isset($password)){
-                       echo htmlspecialchars($password, ENT_QUOTES, 'UTF-8');
+                       echo h($password, ENT_QUOTES, 'UTF-8');
                    }?>"/>
 
 <!--パスワードが4文字以上でない場合、エラーメッセージを出力-->
