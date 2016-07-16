@@ -6,7 +6,7 @@
 <body>
 <p>ユーザー登録が完了しました</p>
 <br>
-<p><a href="../../">ログインする</a></p>
+<p><a href="http://localhost/techaca2/board2/login.php">ログインする</a></p>
 <?php
 session_start();
 
