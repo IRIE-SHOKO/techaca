@@ -21,15 +21,15 @@ session_start();
             $stt->execute();
                 //ログイン成功
                 if($row = $stt->fetch(PDO::FETCH_ASSOC)) {
-                $_SESSION['user_id'] = $row['user_id'];
-                $_SESSION['id'] = $row['id'];
-
-                header('Location: post.php');
-                exit();
+                    //ユーザIDとmembersのIDをセッション情報で渡す
+                    $_SESSION['user_id'] = $row['user_id'];
+                    $_SESSION['id'] = $row['id'];
+                    header('Location: post.php');
+                    exit();
                 }
                 else{
-                //ログイン失敗
-                $errors['login'] = 'failed';
+                     //ログイン失敗
+                     $errors['login'] = 'failed';
                 };
         }
         //ユーザーIDとパスワードのフィールドがどちらも入力されているか確認

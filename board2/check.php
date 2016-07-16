@@ -9,7 +9,7 @@ try{session_start();
 //データベースに接続する
     require_once 'dbconnect.php';
 
-    //直接check.phpが呼び出された場合は、入力画面("index.php")に移動させる。
+    //直接check.phpが呼び出された場合は、登録画面("index.php")に移動させる。
     if (!isset($_SESSION['join'])){
    header('Location: join.index.php');
    exit();

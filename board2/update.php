@@ -1,0 +1,44 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>更新完了</title>
+</head>
+<body>
+
+<?php
+try {
+    session_start();
+    require_once 'dbconnect.php';
+
+    if ($_POST['contents'] != "") {
+
+//ポストされたmembersテーブルのIDとユーザーIDを格納
+        $user_id = $_POST['user_id'];
+        $id = $_POST['id'];
+        $post_id = $_POST['post_id'];
+        $contents = $_POST['contents'];
+
+        if ($user_id == $_SESSION['user_id']) {
+//データベースの接続を確立
+            $db = getDb();
+//データベースの本文を更新
+            $sql = $db->prepare("UPDATE post SET contents = '$contents' WHERE id = $post_id");
+            $sql->execute();
+            echo '更新完了';
+            $db = NULL;
+
+        } else echo 'この投稿をした方以外は削除できません';
+
+    } else echo '本文を入力してください';
+
+}catch (PDOException $e){
+    die("エラーメッセージ:{$e->getMessage()}");
+}
+
+?>
+
+<form method="post" action="post.php">
+    <p><input type="submit" value="投稿画面に戻る"></p>
+</form>
+</body>
+</html>
