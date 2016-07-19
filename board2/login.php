@@ -1,6 +1,14 @@
 <?php
 try {
+    require(dirname(__FILE__) . '/libs/Smarty.class.php');
+
+    $smarty = new Smarty();
+
+    $smarty->template_dir = '../templates';
+    $smarty->compile_dir  = '../templates_c';
+    
 require_once 'dbconnect.php';
+
 
 session_start();
 
@@ -40,44 +48,5 @@ session_start();
 }   catch (PDOException $e){
     die("エラーメッセージ:{$e->getMessage()}");
     };
-?>
 
-
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>ログイン画面</title>
-</head>
-<body>
-<p>パスワードとユーザーIDを記入してログインしてください</p>
-<p>会員登録がまだの方はこちらからどうぞ</p>
-<!--ここの部分を相対パスに直しておくこと-->
-<p>&raquo<a href="http://localhost/techaca2/board2/join.index.php">会員登録をする</a></p>
-
-<form action="" method="post">
-    <dl>
-        <?php if(isset($errors['login'])){if ($errors['login'] == 'blank') :?>
-        <p class="errors">*メールアドレスとパスワードをご記入ください</p>
-        <?php endif;}?>
-    <dt>ユーザーID</dt>
-    <dd>
-        <input type="text" name="user_id" size="35" maxlength="255"
-        value="<?php if(isset($user_id)){echo htmlspecialchars($user_id);}?>"/>
-        <?php if(isset($errors['login'])){if($errors['login'] == 'failed') :?>
-            <p class="errors">ログインに失敗しました。正しくご記入ください</p>
-        <?php endif;}?>
-    </dd>
-
-<br>
-
-    <dt>パスワード</dt>
-    <dd>
-        <input type="password" name="password" size="35" maxlength="255"
-        value="<?php if(isset($password)){echo htmlspecialchars($password);}?>"/>
-    </dd>
-    </dl>
-
-<div><input type="submit" value="ログインする"></div>
-</form>
-</body>
-</html>
+$smarty->display('login.tpl');
