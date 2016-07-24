@@ -1,13 +1,7 @@
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>更新完了</title>
-</head>
-<body>
-
 <?php
 try {
     session_start();
+    require_once 'MySmarty.class.php';
     require_once 'dbconnect.php';
 
     if ($_POST['contents'] != "") {
@@ -24,7 +18,6 @@ try {
 //データベースの本文を更新
             $sql = $db->prepare("UPDATE post SET contents = '$contents' WHERE id = $post_id");
             $sql->execute();
-            echo '更新完了';
             $db = NULL;
 
         } else echo 'この投稿をした方以外は削除できません';
@@ -35,10 +28,4 @@ try {
     die("エラーメッセージ:{$e->getMessage()}");
 }
 
-?>
-
-<form method="post" action="post.php">
-    <p><input type="submit" value="投稿画面に戻る"></p>
-</form>
-</body>
-</html>
+$smarty->display('update.tpl');
