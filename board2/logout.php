@@ -1,13 +1,5 @@
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>ログアウトしました</title>
-</head>
-<body>
-<p>ログアウトしました</p>
-<br>
-
 <?php
+require_once 'MySmarty.class.php';
 session_start();
 
 require_once 'dbconnect.php';
@@ -16,10 +8,4 @@ $_SESSION['user_id'] = array();
 $_SESSION['id'] = array();
 session_destroy();
 
-?>
-
-<form method="post" action="login.php">
-    <p><input type="submit" value="ログインする"></p>
-</form>
-</body>
-</html>
+$smarty->display('logout.tpl');

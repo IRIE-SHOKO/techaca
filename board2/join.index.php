@@ -1,23 +1,19 @@
 <?php
-
 try {session_start();
     //データベースに接続
     require_once 'MySmarty.class.php';
     require_once 'dbconnect.php';
-    
+
     //データベースへの接続を確立
     $db = getDb();
-
     //POSTしたものを受け取り、それぞれの関数に格納
     if (isset($_POST['name']) && isset($_POST['user_id']) && isset($_POST['password'])) {
         $name = $_POST['name'];
         $user_id = $_POST['user_id'];
         $password = $_POST['password'];
-
         $smarty->assign('name', $name);
         $smarty->assign('user', $user_id);
         $smarty->assign('name', $password);
-
         //フォームが送信されているか確認
         //送信されている場合、次の処理に進む
         if (!empty($_POST)) {
@@ -38,7 +34,6 @@ try {session_start();
                 $error['password'] = 'blank';
                 $smarty->assign('error_password_blank', $error['password']);
             }
-
             //ユーザーIDが重複していないか確認
             if (empty($error)) {
                 $stt = $db->prepare("SELECT user_id FROM members WHERE user_id = '$user_id'");
@@ -56,7 +51,6 @@ try {session_start();
                 $_SESSION['name'] = $name;
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['password'] = $password;
-
                 header('Location: check.php');
                 exit();
             }
@@ -65,5 +59,4 @@ try {session_start();
 }catch (PDOException $e){
     die("エラーメッセージ:{$e->getMessage()}");
 }
-
 $smarty->display('join.index.tpl');
