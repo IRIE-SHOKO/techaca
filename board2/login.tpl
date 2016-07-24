@@ -11,11 +11,11 @@
 <p>&raquo<a href="http://localhost/techaca2/board2/join.index.php">会員登録をする</a></p>
 
 <!--ログインフォームを作成-->
-<form action="" method="post">
+<form action="login.php" method="post">
     <dl>
-        {if isset($errors['login'])}
-            {if $errors['login'] == 'blank'}
-            <p class="errors">*メールアドレスとパスワードをご記入ください</p>
+        {if isset($errors)}
+            {if $errors == 'blank'}
+            <p class="errors">*ユーザIDとパスワードをご記入ください</p>
             {/if}
         {/if}
 
@@ -23,8 +23,9 @@
         <dd>
             <input type="text" name="user_id" size="35" maxlength="255"
                    value="{if isset($user_id)}echo htmlspecialchars({$user_id});{/if}">
-            {if isset($errors['login'])}
-                {if $errors['login'] == 'failed'}
+
+            {if isset($errors)}
+                {if $errors == 'failed'}
                 <p class="errors">ログインに失敗しました。正しくご記入ください</p>
                 {/if}
             {/if}

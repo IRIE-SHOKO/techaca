@@ -1,12 +1,6 @@
 <?php
 try {
-    require(dirname(__FILE__) . '/libs/Smarty.class.php');
-
-    $smarty = new Smarty();
-
-    $smarty->template_dir = '../templates';
-    $smarty->compile_dir  = '../templates_c';
-    
+require_once 'MySmarty.class.php';
 require_once 'dbconnect.php';
 
 
@@ -25,6 +19,7 @@ session_start();
         if($user_id !== "" && $password !== ""){
 
             //ログインの処理
+            //打ち込んだユーザiDとパスワードを使用し、照合
             $stt = $db->prepare("SELECT * FROM members WHERE user_id = '$user_id' AND password = '$password'");
             $stt->execute();
                 //ログイン成功
@@ -36,13 +31,15 @@ session_start();
                     exit();
                 }
                 else{
-                     //ログイン失敗
+                    //ログイン失敗
                      $errors['login'] = 'failed';
+                     $smarty->assign('errors', $errors['login']);
                 };
-        }
-        //ユーザーIDとパスワードのフィールドがどちらも入力されているか確認
+        
+        } //ユーザーIDとパスワードのフィールドがどちらも入力されているか確認
         else{//ログイン失敗
               $errors['login'] = 'blank';
+              $smarty->assign('errors', $errors['login']);
              };
     }
 }   catch (PDOException $e){
