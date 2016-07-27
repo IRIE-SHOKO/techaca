@@ -1,7 +1,7 @@
 <?php
 try {
     session_start();
-    require_once 'MySmarty';
+    require_once 'MySmartyClass.php';
     require_once 'dbconnect.php';
 
     //post.tplから受け取ったmembersテーブルのIDとユーザーIDを格納

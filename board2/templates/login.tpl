@@ -7,12 +7,12 @@
 
 <p>パスワードとユーザーIDを記入してログインしてください</p>
 <p>会員登録がまだの方はこちらからどうぞ</p>
-<form method="post" action="../join.php">
+<form method="post" action="join.php">
     <p><input type="submit" value="会員登録をする"></p>
 </form>
 
 <!--ログインフォームを作成-->
-<form action="../login.php" method="post">
+<form action="login.php" method="post">
     <dl>
         {if isset($errors)}
             {if $errors == 'blank'}

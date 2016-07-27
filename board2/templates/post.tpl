@@ -10,7 +10,7 @@
 <!--投稿フォームの作成-->
 <table>
 
-        <form method="post" action="../post.php">
+        <form method="post" action="post.php">
             <p>メッセージをどうぞ！</p>
             <input type="message" name="contents" size="75" maxlength="300"></dd>
             <br>
@@ -20,7 +20,7 @@
     </td>
 
     <td>
-        <form method="post" action="../logout.php">
+        <form method="post" action="logout.php">
             <p><input type="submit" value="ログアウトする"></p>
         </form>
     </td>
@@ -38,7 +38,7 @@
                        {if $id == $i.post_user_id}
                         <table>
                         <td>
-                        <form method="post" action="../delete.php">
+                        <form method="post" action="delete.php">
                         <input type="hidden" name="id" value="{$id}">
                         <input type="hidden" name="post_id" value="{$i.post_id}">
                         <input type="hidden" name="user_id" value="{$user_id}">
@@ -47,7 +47,7 @@
                         </td>
 
                         <td>
-                        <form method="post" action="../edit.php">
+                        <form method="post" action="edit.php">
                         <input type="hidden" name="id" value="{$id}">
                         <input type="hidden" name="post_id" value="{$i.post_id}">
                         <input type="hidden" name="user_id" value="{$user_id}">

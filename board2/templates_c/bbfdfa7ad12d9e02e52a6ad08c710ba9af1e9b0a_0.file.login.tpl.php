@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-07-27 11:46:29
+/* Smarty version 3.1.28, created on 2016-07-27 11:51:31
   from "C:\xampp\htdocs\techaca2\board2\templates\login.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_579882f5881663_82520549',
+  'unifunc' => 'content_5798842325d4e0_81431941',
   'file_dependency' => 
   array (
     'bbfdfa7ad12d9e02e52a6ad08c710ba9af1e9b0a' => 
     array (
       0 => 'C:\\xampp\\htdocs\\techaca2\\board2\\templates\\login.tpl',
-      1 => 1469611885,
+      1 => 1469613026,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_579882f5881663_82520549 ($_smarty_tpl) {
+function content_5798842325d4e0_81431941 ($_smarty_tpl) {
 ?>
 <html>
 <head>
@@ -30,12 +30,12 @@ function content_579882f5881663_82520549 ($_smarty_tpl) {
 
 <p>パスワードとユーザーIDを記入してログインしてください</p>
 <p>会員登録がまだの方はこちらからどうぞ</p>
-<form method="post" action="../join.php">
+<form method="post" action="join.php">
     <p><input type="submit" value="会員登録をする"></p>
 </form>
 
 <!--ログインフォームを作成-->
-<form action="../login.php" method="post">
+<form action="login.php" method="post">
     <dl>
         <?php if (isset($_smarty_tpl->tpl_vars['errors']->value)) {?>
             <?php if ($_smarty_tpl->tpl_vars['errors']->value == 'blank') {?>

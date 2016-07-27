@@ -7,7 +7,7 @@
 
 {*membersテーブルのIDとpostテーブルのユーザIDが一致するか確認し、ユーザ認証*}
 {if $id == $post_user_id}
-<form method="post" action="../update.php">
+<form method="post" action="update.php">
     <p>編集したい内容をどうぞ！</p>
     <input type="message" name="contents" size="75" maxlength="300">
     <input type="hidden" name="id" value={$id}>

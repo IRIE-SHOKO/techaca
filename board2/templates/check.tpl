@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<form action="../thanks.php" method="post">
+<form action="thanks.php" method="post">
     <dl>
         <dt>ニックネーム</dt>
         <dd>

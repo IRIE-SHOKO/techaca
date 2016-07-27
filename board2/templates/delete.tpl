@@ -6,7 +6,7 @@
 <body>
 <p>投稿を削除しました</p>
 <br>
-<form method="post" action="../post.php">
+<form method="post" action="post.php">
     <p><input type="submit" value="投稿画面に戻る"></p>
 </form>
 </body>
