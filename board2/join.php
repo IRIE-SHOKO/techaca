@@ -1,7 +1,7 @@
 <?php
 try {session_start();
     //データベースに接続
-    require_once 'MySmarty.class.php';
+    require_once 'MySmartyClass.php';
     require_once 'dbconnect.php';
 
     //データベースへの接続を確立
@@ -14,6 +14,7 @@ try {session_start();
         $smarty->assign('name', $name);
         $smarty->assign('user', $user_id);
         $smarty->assign('name', $password);
+
         //フォームが送信されているか確認
         //送信されている場合、次の処理に進む
         if (!empty($_POST)) {
@@ -59,4 +60,5 @@ try {session_start();
 }catch (PDOException $e){
     die("エラーメッセージ:{$e->getMessage()}");
 }
-$smarty->display('join.index.tpl');
+
+$smarty->display('join.tpl');

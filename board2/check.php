@@ -1,12 +1,13 @@
 <?php
-require 'MySmarty.class.php';
+require 'MySmartyClass.php';
+
 try{session_start();
 //データベースに接続する
     require_once 'dbconnect.php';
 
     //直接check.phpが呼び出された場合は、登録画面("index.php")に移動させる。
     if (!isset($_SESSION['join'])){
-   header('Location: join.index.php');
+   header('Location: join.php');
    exit();
    }    else {
         $db = getDb();
@@ -22,6 +23,7 @@ try{session_start();
         $stt->bindValue(':password', $_SESSION['join']['password']);
         $stt->execute();
         }
+
 }       catch (PDOException $e){
         die("エラーメッセージ:{$e->getMessage()}");
         }

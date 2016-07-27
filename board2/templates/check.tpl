@@ -22,8 +22,8 @@
             【表示されません】
         </dd>
     </dl>
-    <div><a href="../join.index.php?action=rewrite">&laquo;&nbsp;書き直す</a>
-        <input type="submit" value="登録する"></div>
+    <div><input type="submit" value="登録する"></div>
+    <br>
 </form>
 
 </body>

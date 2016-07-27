@@ -1,5 +1,5 @@
 <?php
-require_once 'MySmarty.class.php';
+require_once 'MySmartyClass.php';
 session_start();
 
 require_once 'dbconnect.php';

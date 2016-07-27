@@ -2,7 +2,7 @@
 
 try {session_start();
     
-    require_once 'MySmarty.class.php';
+    require_once 'MySmartyClass.php';
     require_once 'dbconnect.php';
 
     //セッション情報からmembersテーブルのIDとユーザーIDを取り出し変数に格納

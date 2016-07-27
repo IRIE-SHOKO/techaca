@@ -1,17 +1,17 @@
 <?php
-/* Smarty version 3.1.28, created on 2016-07-19 18:40:01
+/* Smarty version 3.1.28, created on 2016-07-27 11:11:05
   from "C:\xampp\htdocs\techaca2\board2\logout.tpl" */
 
 if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl, array (
   'has_nocache_code' => false,
   'version' => '3.1.28',
-  'unifunc' => 'content_578e57e1965d58_17049987',
+  'unifunc' => 'content_57987aa97cd620_37866635',
   'file_dependency' => 
   array (
     '23353b8da971f5ba3b20f5633288a3fef399b866' => 
     array (
       0 => 'C:\\xampp\\htdocs\\techaca2\\board2\\logout.tpl',
-      1 => 1468686759,
+      1 => 1469610574,
       2 => 'file',
     ),
   ),
@@ -19,7 +19,7 @@ if ($_smarty_tpl->smarty->ext->_validateCompiled->decodeProperties($_smarty_tpl,
   array (
   ),
 ),false)) {
-function content_578e57e1965d58_17049987 ($_smarty_tpl) {
+function content_57987aa97cd620_37866635 ($_smarty_tpl) {
 ?>
 <html>
 <head>

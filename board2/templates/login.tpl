@@ -7,7 +7,9 @@
 
 <p>パスワードとユーザーIDを記入してログインしてください</p>
 <p>会員登録がまだの方はこちらからどうぞ</p>
-<p>&raquo<a href="http://localhost/techaca2/board2/join.index.php">会員登録をする</a></p>
+<form method="post" action="../join.php">
+    <p><input type="submit" value="会員登録をする"></p>
+</form>
 
 <!--ログインフォームを作成-->
 <form action="../login.php" method="post">
